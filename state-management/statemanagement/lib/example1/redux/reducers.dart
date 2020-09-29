@@ -2,7 +2,7 @@
 import 'package:statemanagement/example1/redux/actions.dart';
 import 'package:statemanagement/example1/redux/application_states.dart';
 
-ApplicationState case2Reducer(ApplicationState state, dynamic action) {
+ApplicationState example1Reducer(ApplicationState state, dynamic action) {
 
   if (action is AddPanelAction){
     List<PanelState> panelsList = state.panelsList;

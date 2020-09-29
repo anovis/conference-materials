@@ -18,7 +18,7 @@ class _Example1ReduxApplicationState extends State<Example1ReduxApplication> {
   void initState(){
     super.initState();
     applicationStore = Store<ApplicationState>(
-      case2Reducer,
+      example1Reducer,
       initialState: ApplicationState.initial(),
       middleware: <Middleware<ApplicationState>>[
         tickerMiddleware,
