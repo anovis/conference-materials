@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:statemanagement/example2/redux/actions.dart';
-import 'package:statemanagement/example2/redux/add_item_dialog.dart';
-import 'package:statemanagement/example2/redux/bottom_cart_bar.dart';
-import 'package:statemanagement/example2/redux/shopping_list.dart';
+import 'package:statemanagement/example2/redux/my_cart.dart';
+import 'package:statemanagement/example2/redux/my_catalog.dart';
 import 'package:statemanagement/example2/redux/app_state.dart';
 import 'package:redux/redux.dart';
 import 'package:statemanagement/example2/redux/store.dart';
@@ -23,6 +22,7 @@ class Example2ReduxApplication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
@@ -30,35 +30,16 @@ class Example2ReduxApplication extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: StoreBuilder<AppState>(
-            onInit: (store) => store.dispatch(FetchItemsAction()),
-            builder: (context, store) => ShoppingCart(store)),
+        initialRoute: '/',
+        routes: {
+          '/': (context)=> StoreBuilder<AppState>(
+            // onInit: (store) => store.dispatch(FetchItemsAction()),
+            builder: (context, store) => MyCatalog()),
+          '/cart': (context) => MyCart(),
+        },
+        
       ),
     );
   }
 }
 
-class ShoppingCart extends StatelessWidget {
-  final Store<AppState> store;
-
-  ShoppingCart(this.store);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('ShoppingList'),
-      ),
-      body: ShoppingList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _openAddItemDialog(context),
-        child: Icon(Icons.add),
-      ),
-      bottomSheet: BottomCartBar(),
-    );
-  }
-
-  void _openAddItemDialog(BuildContext context) {
-    showDialog(context: context, builder: (context) => AddItemDialog());
-  }
-}

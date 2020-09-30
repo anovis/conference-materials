@@ -10,8 +10,8 @@ void main(){
   // mainExample1Bloc();
   // mainExample1Redux();
 
-  // mainExample2Redux();
-  mainExample2Bloc();
+  mainExample2Redux();
+  // mainExample2Bloc();
 }
 
 void mainExample1Redux(){
@@ -22,10 +22,10 @@ void mainExample1Bloc(){
   runApp(Example1BlocApplication());
 }
 
-void mainExample2Bloc() async{
+void mainExample2Bloc() {
   runApp(Example2BlocApplication());
 }
 
-void mainExample2Redux() async{
+void mainExample2Redux() {
   runExample2ReduxApplication();
 }

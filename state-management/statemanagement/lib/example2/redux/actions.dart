@@ -1,53 +1,11 @@
 import 'package:equatable/equatable.dart';
-import 'package:statemanagement/example2/redux/shopping_list.dart';
-import 'package:statemanagement/example2/common/cart_item.dart';
+import 'package:statemanagement/example2/common/item.dart';
 
-class AddItemAction extends Equatable {
-  final CartItem item;
+class CartItemAdded extends Equatable {
+  final Item item;
 
-  AddItemAction(this.item);
-
-  @override
-  List<Object> get props => [item];
-}
-
-class ToggleItemStateAction extends Equatable {
-  final String item;
-
-  ToggleItemStateAction(this.item);
+  CartItemAdded(this.item);
 
   @override
   List<Object> get props => [item];
-}
-
-class FetchItemsAction extends Equatable {
-  @override
-  List<Object> get props => [];
-}
-
-class ItemLoadedAction extends Equatable {
-  final List<CartItem> items;
-
-  ItemLoadedAction(this.items);
-
-  @override
-  List<Object> get props => [items];
-}
-
-class RemoveItemAction extends Equatable {
-  final CartItem item;
-
-  RemoveItemAction(this.item);
-
-  @override
-  List<Object> get props => [item];
-}
-
-class FetchCartItemsAction extends Equatable {
-  final OnStateChanged callback;
-
-  FetchCartItemsAction(this.callback);
-
-  @override
-  List<Object> get props => [callback];
 }

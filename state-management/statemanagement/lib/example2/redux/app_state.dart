@@ -1,23 +1,17 @@
 import 'package:equatable/equatable.dart';
-import 'package:statemanagement/example2/common/cart_item.dart';
+import 'package:statemanagement/example2/common/cart.dart';
+import 'package:statemanagement/example2/common/catalog.dart';
 
 class AppState extends Equatable {
-  final List<CartItem> cartItems;
+  final Catalog catalog;
+  final Cart cart;
 
-  AppState(this.cartItems);
+  AppState(this.catalog, this.cart);
 
-  AppState.fromJson(Map<String, dynamic> json)
-      : cartItems = (json['cartItems'] as List)
-            ?.map((i) => new CartItem.fromJson(i as Map<String, dynamic>))
-            ?.toList();
 
-  factory AppState.empty() => AppState(new List());
+  factory AppState.empty() => AppState(Catalog(),Cart());
 
-  Map<String, dynamic> toJson() => {'cartItems': cartItems};
 
   @override
-  String toString() => "$cartItems";
-
-  @override
-  List<Object> get props => [cartItems];
+  List<Object> get props => cart.items;
 }
