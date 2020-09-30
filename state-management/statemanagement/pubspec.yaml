@@ -18,6 +18,7 @@ dependencies:
   equatable: ^1.2.5
   bloc: ^6.0.1
   flutter_bloc: ^6.0.1
+  lipsum: ^1.0.1
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:statemanagement/example2/bloc/cart/bloc/cart_bloc.dart';
 import 'package:statemanagement/example2/bloc/catalog/bloc/catalog_bloc.dart';
+import 'package:statemanagement/example2/bloc/review/bloc/review_bloc.dart';
 import 'package:statemanagement/example2/common/item.dart';
+import 'package:statemanagement/example2/common/review.dart';
 
 class MyCatalog extends StatelessWidget {
   @override
@@ -13,26 +15,31 @@ class MyCatalog extends StatelessWidget {
           _MyAppBar(),
           const SliverToBoxAdapter(child: SizedBox(height: 12)),
           BlocBuilder<CatalogBloc, CatalogState>(
-            builder: (context, state) {
-              if (state is CatalogLoading) {
+            builder: (context, catalogState) {
+            return BlocBuilder<ReviewBloc, ReviewState>(
+            builder: (context, reviewState) {
+              if (catalogState is CatalogLoading || reviewState is ReviewLoading) {
                 return const SliverFillRemaining(
                   child: Center(
                     child: CircularProgressIndicator(),
                   ),
                 );
               }
-              if (state is CatalogLoaded) {
+              if (catalogState is CatalogLoaded && reviewState is ReviewLoaded) {
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, index) => _MyListItem(
-                      state.catalog.getByPosition(index),
+                      catalogState.catalog.getByPosition(index),
+                      reviewState.reviews[index]
                     ),
                   ),
                 );
               }
               return const Text('Something went wrong!');
             },
-          ),
+          );
+            }
+          )
         ],
       ),
     );
@@ -85,28 +92,54 @@ class _MyAppBar extends StatelessWidget {
   }
 }
 
-class _MyListItem extends StatelessWidget {
-  const _MyListItem(this.item, {Key key}) : super(key: key);
-
+class _MyListItem extends StatefulWidget {
+  _MyListItem(this.item,this.review,{Key key}) : super(key: key);
   final Item item;
+  final Review review;
+
+  @override
+  _MyListItemState createState() => _MyListItemState();
+}
+
+
+class _MyListItemState extends State<_MyListItem> {
+  
+  bool _active = false;
+
+  void _handleTap() {
+    setState(() {
+      _active = !_active;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme.headline6;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: LimitedBox(
+      child: Column(children:[LimitedBox(
         maxHeight: 48,
         child: Row(
           children: [
-            AspectRatio(aspectRatio: 1, child: ColoredBox(color: item.color)),
+            AspectRatio(aspectRatio: 1, child: ColoredBox(color: widget.item.color)),
             const SizedBox(width: 24),
-            Expanded(child: Text(item.name, style: textTheme)),
+            GestureDetector(
+              onTap: (){
+                _handleTap();
+              },
+              child: Text(widget.item.name, style: textTheme),
+            ),
             const SizedBox(width: 24),
-            _AddButton(item: item),
+            _AddButton(item: widget.item),
           ],
         ),
       ),
+      _active? LimitedBox(
+        maxHeight: 48,
+        child: Text('Review:   ' + widget.review.review, style: textTheme),
+      ): Container()
+      ]
+      )
     );
   }
 }

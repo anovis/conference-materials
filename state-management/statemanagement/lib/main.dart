@@ -10,8 +10,8 @@ void main(){
   // mainExample1Bloc();
   // mainExample1Redux();
 
-  mainExample2Redux();
-  // mainExample2Bloc();
+  // mainExample2Redux();
+  mainExample2Bloc();
 }
 
 void mainExample1Redux(){

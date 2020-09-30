@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:statemanagement/example2/redux/actions.dart';
 import 'package:statemanagement/example2/redux/my_cart.dart';
 import 'package:statemanagement/example2/redux/my_catalog.dart';
 import 'package:statemanagement/example2/redux/app_state.dart';

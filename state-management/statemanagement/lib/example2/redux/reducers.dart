@@ -11,5 +11,5 @@ AppState appStateReducers(AppState state, dynamic action) {
 }
 
 AppState addItem(AppState state, CartItemAdded action) {
-  return AppState(state.catalog,Cart(items: List.from(state.cart.items)..add(action.item)));
+  return AppState(state.catalog,Cart(items: List.from(state.cart.items)..add(action.item)), state.reviews);
 }

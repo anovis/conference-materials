@@ -1,5 +1,4 @@
 import 'package:statemanagement/example2/redux/app_state.dart';
-import 'package:statemanagement/example2/redux/actions.dart';
 import 'package:redux/redux.dart';
 
 class ApiMiddleware extends MiddlewareClass<AppState> {

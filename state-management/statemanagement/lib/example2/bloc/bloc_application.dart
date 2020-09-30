@@ -4,6 +4,7 @@ import 'package:statemanagement/example2/bloc/cart/bloc/cart_bloc.dart';
 import 'package:statemanagement/example2/bloc/cart/my_cart.dart';
 import 'package:statemanagement/example2/bloc/catalog/bloc/catalog_bloc.dart';
 import 'package:statemanagement/example2/bloc/catalog/my_catalog.dart';
+import 'package:statemanagement/example2/bloc/review/bloc/review_bloc.dart';
 
 
 class Example2BlocApplication extends StatelessWidget {
@@ -16,6 +17,9 @@ class Example2BlocApplication extends StatelessWidget {
         ),
         BlocProvider<CartBloc>(
           create: (_) => CartBloc()..add(CartStarted()),
+        ),
+         BlocProvider<ReviewBloc>(
+          create: (_) => ReviewBloc()..add(ReviewStarted()),
         ),
       ],
       child: MaterialApp(
