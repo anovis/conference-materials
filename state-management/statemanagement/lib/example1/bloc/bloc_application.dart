@@ -5,7 +5,7 @@ class Example1BlocApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ReduxScopedModelBloc_Comparison',
+      title: 'Statemanagement_Comparison',
       home: BlocPage(),
     );
   }

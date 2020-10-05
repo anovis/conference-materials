@@ -19,6 +19,7 @@ dependencies:
   bloc: ^6.0.1
   flutter_bloc: ^6.0.1
   lipsum: ^1.0.1
+  mvc_pattern: ^6.4.0
 
 dev_dependencies:
   flutter_test:

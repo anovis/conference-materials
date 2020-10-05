@@ -37,7 +37,7 @@ class _Example1ReduxApplicationState extends State<Example1ReduxApplication> {
     return StoreProvider<ApplicationState>(
       store: applicationStore,
       child: MaterialApp(
-        title: 'ReduxScopedModelBloc_Comparison',
+        title: 'Statemanagement_Comparison',
         home: ReduxPage(),
       ),
     );
