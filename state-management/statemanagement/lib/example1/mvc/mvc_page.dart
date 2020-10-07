@@ -9,7 +9,7 @@ class MVCPage extends StatefulWidget {
 
 class _MVCPageState extends State<MVCPage> {
   List<MVCWidget> _widgets = <MVCWidget>[];
-  final MVCCon _con = MVCCon();
+  final MVCCon _con = MVCCon.con;
 
   @override
   void initState(){

@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:statemanagement/example1/common/async_data_fetcher.dart';
 import 'package:statemanagement/example1/mvc/mvc_controller.dart';
+import 'package:statemanagement/example1/mvc/mvc_model.dart';
 
 class MVCWidget extends StatefulWidget {
     MVCWidget({
@@ -15,6 +19,30 @@ class MVCWidget extends StatefulWidget {
 }
 
 class _StatsWidgetState extends State<MVCWidget> {
+
+  @override
+  void initState(){
+    super.initState();
+
+    void _startTimer(int index) {
+      Timer(Duration(seconds: 1), () async {
+        // Fetch a new value (pseudo asynchronously)
+        PanelState panel = MVCCon.panel(index);
+
+        double newValue = await AsyncDataFetcher.getValue();
+        panel.addStats(newValue);
+        // Re-arm the timer if still on
+        setState(() {
+        });
+        if (panel.isTimerOn){
+          _startTimer(index);
+        }
+      });
+    }
+      _startTimer(widget.panelIndex);
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +64,7 @@ class _StatsWidgetState extends State<MVCWidget> {
                       8.0,
                     ),
                     child: Sparkline(
-                      data: MVCCon.panel(widget.panelIndex).stats,
+                      data: MVCCon.panel(widget.panelIndex).stats.length==0 ? [0.0]:MVCCon.panel(widget.panelIndex).stats ,
                     ),
                   )
               ),
@@ -46,8 +74,10 @@ class _StatsWidgetState extends State<MVCWidget> {
                   padding: const EdgeInsets.all(8.0),
                   child:RaisedButton(
                       child: Text(MVCCon.panel(widget.panelIndex).isTimerOn ? 'Stop' : 'Start'),
-                      onPressed: () =>
-                        MVCCon.togglePanel(widget.panelIndex)     
+                      onPressed: (){
+                        MVCCon.togglePanel(widget.panelIndex);
+                        setState((){});
+                      }
                     )
                   ),
                 ),

@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:statemanagement/example1/common/async_data_fetcher.dart';
 import 'package:statemanagement/example1/mvc/mvc_model.dart';
 
 class MVCCon extends AppConMVC {
@@ -25,27 +22,12 @@ class MVCCon extends AppConMVC {
   }
 
   void addPanel(){
-    model.panelsList.add(PanelState());
+    model.panels.add(PanelState());
+    togglePanel(model.panels.length-1);
   }
 
   void init(){
     togglePanel(0);
-    _startTimer(0);
-  }
-
-  static void _startTimer(int index) {
-    Timer(Duration(seconds: 1), () async {
-      // Fetch a new value (pseudo asynchronously)
-      PanelState panel = model.panels[index];
-
-      double newValue = await AsyncDataFetcher.getValue();
-      panel.addStats(newValue);
-      
-      // Re-arm the timer if still on
-      if (panel.isTimerOn){
-        _startTimer(index);
-      }
-    });
   }
 
 }
