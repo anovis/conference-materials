@@ -1,17 +1,41 @@
 # Conference Materials
-demos and slides for conference talks
 
-#### Container Infrastructure
+Demos and slides for conference talks
 
-* INFRASTRUCTURE IN A THE NEW WORLD OF CONTAINERS: WHAT ARE YOUR OPTIONS?
+---
 
-[DevOpsDays Boston 2018](https://www.devopsdays.org/events/2018-boston/program/austen-novis/) 
+## The State of State Management
 
-#### Just in Time Infrastructure
+* The State of state manegement
+
+[MobileOptimized 2020](https://moconf.dev/)
+
+> **_NOTE:_** Examples in `/state-management`
+
+---
+
+## Container Infrastructure
+
+* Infrastructre in the New World of Containers: What are your options?
+
+[DevOpsDays Boston 2018](https://www.devopsdays.org/events/2018-boston/program/austen-novis/)
+
+> **_NOTE:_** Examples in `/container-infrastructure`
+
+---
+
+## Just in Time Infrastructure
+
 * Just in Time Cloud Infrastructure: Redefining the Relationship Between Applications and Cloud Infrastructure
-    
+
 [DevOpsDays Toronto 2019](https://pheedloop.com/dodto19/site/sessions/?id=zdeRUR)
 
+--- 
 
-#### Cloud Intro
+## Cloud Intro
+
 * Harvard Computer Engineering Society 2019
+
+> **_NOTE:_** Examples in `/cloud-intro`
+
+---
