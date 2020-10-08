@@ -6,6 +6,7 @@ import 'package:statemanagement/example2/redux/redux_application.dart';
 import 'package:statemanagement/example1/mvc/mvc_application.dart';
 
 
+///// Toggle examples /////
 void main(){
 
   // mainExample1Bloc();
