@@ -8,7 +8,7 @@ Demos and slides for conference talks
 
 * The State of State Management
 
-    [MobileOptimized 2020](https://moconf.dev/)
+    [MobileOptimized 2020](https://www.youtube.com/watch?v=dCVe-fqHRY8&list=PLpVeA1tdgfCAEG_WDyLKoHDxmsGocQaX6&index=7&ab_channel=SPACE)
 
     > **_NOTE:_** Examples in `/state-management`
 
